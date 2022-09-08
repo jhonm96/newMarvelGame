@@ -1,0 +1,24 @@
+/* You can add global styles to this file, and also import other style files */
+
+/* Importing Bootstrap SCSS file. */
+@import '~bootstrap/scss/bootstrap';
+
+.cont{
+  background-image: url("https://cdn.discordapp.com/attachments/1015394220267282476/1016153612096905336/WallpaperDog-5465130.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+}
+
+.cuadro{
+  font-family:'Franklin Gothic Medium';
+  margin: auto;
+  width: 30em;
+  height: 15em;
+  background: linear-gradient(0deg, rgba(34,193,195,1) 0%, rgba(253,187,45,1) 100%);
+  border-radius: 5px;
+  text-align: center;
+  position: relative;
+}

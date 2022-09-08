@@ -1,0 +1,18 @@
+<div class="cont">
+  <!-- <div  class="col-md-6 mb-4"> -->
+    <div class=" cuadro card  ">
+      <h1 class="titulo">Crear Juego</h1>
+      <div class="card-body">
+      <h4 >Lista de jugadores</h4>
+      <div class="checkbox"*ngFor="let user of listaUsuarios">
+        <label >
+          <input type="checkbox" value="">
+          {{user.nombre}}
+        </label>
+      </div>
+      </div>
+      <button class="btn" (click)="crear()">Crear</button>
+    </div>
+  <!-- </div> -->
+</div>
+
