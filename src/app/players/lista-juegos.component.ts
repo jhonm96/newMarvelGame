@@ -11,12 +11,12 @@ import { v4 as uuidv4, v4 } from 'uuid';
 
 
 @Component({
-  selector: 'app-lista-juegos',
-  templateUrl: './lista-juegos.component.html',
-  styleUrls: ['./lista-juegos.component.scss']
+  selector: 'app-players',
+  templateUrl: './players.component.html',
+  styleUrls: ['./players.component.scss']
 })
 
-export class ListaJuegosComponent implements OnInit {
+export class PlayersComponent implements OnInit {
 
   jugadores!: Usuario[];
   formPlayers!: FormGroup;

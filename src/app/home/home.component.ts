@@ -4,11 +4,11 @@ import { AuthService } from '../modules/auth1/auth.service';
 
 
 @Component({
-  selector: 'app-lobby',
-  templateUrl: './lobby.component.html',
-  styleUrls: ['./lobby.component.scss']
+  selector: 'app-home',
+  templateUrl: './home.component.html',
+  styleUrls: ['./home.component.scss']
 })
-export class lobbyComponent implements OnInit {
+export class HomeComponent implements OnInit {
 
   constructor(private auth:AuthService,private router:Router) { }
 
@@ -23,7 +23,7 @@ export class lobbyComponent implements OnInit {
    .catch(error=> console.log(error))
      }
   crearJuego(){
-    this.router.navigate(['/listado']);
+    this.router.navigate(['/players']);
     }
 
 }

@@ -7,7 +7,7 @@ import { JugadorSimple } from '../models/jugadorsimpleinterface';
 @Component({
   selector: 'app-createdgames',
   templateUrl: './createdgames.component.html',
-  styleUrls: ['./createdgames.component.css']
+  styleUrls: ['./createdgames.component.scss']
 })
 export class CreatedgamesComponent implements OnInit {
 
@@ -31,7 +31,7 @@ export class CreatedgamesComponent implements OnInit {
     }
 
     goToGame(idGame: string): void {
-      this.router.navigate(['/board']);
+      this.router.navigate(['/tablero']);
     }
 
     getNameCreator(dataGame: JuegoData) {

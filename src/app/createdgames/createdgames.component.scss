@@ -1,23 +1,27 @@
-.container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 100vw;
-    height: 90vh;
-    color: #191919;
 
-    .background {
-        background-image: url("../../../../assets/images/background-spiderman2.jpg");
-    }
+
+
+
 
     .container_body {
-        background: white;
-        box-shadow: 1px 1px 4px white;
+        background: rgb(38, 168, 18);
+        box-shadow: 1px 1px 4px rgb(13, 21, 255);
         border-radius: 10px;
         max-height: 70%;
-        overflow-y: scroll;
+        overflow:auto;
     }
 
+
+
+.cuadro{
+  font-family:'Franklin Gothic Medium';
+  margin: auto;
+  width: 30em;
+  height: 20em;
+  background: linear-gradient(0deg, rgba(34,193,195,1) 0%, rgba(253,187,45,1) 100%);
+  border-radius: 5px;
+  text-align: center;
+  position: relative;
 }
 
 #games_availables {
@@ -31,7 +35,7 @@
         list-style: none;
         padding: 10px;
         border-radius: 4px;
-        border: 1px solid gray;
+        border: 1px solid rgb(91, 169, 13);
         margin: 2px;
         transition: all 0.3s ease-in-out;
 
@@ -45,15 +49,26 @@
         p{
             margin: 2px;
         }
-        .created_by{
-            text-align: end;
-            color: gray;
-            font-size: 0.8rem;
-        }
 
     }
+
+.created_by{
+    text-align: center;
+    color: rgb(35, 80, 243);
+    font-size: 0.8rem;
+}
+
+
 
     .option_game:hover {
-        border: 1px solid #eb5449;
+        border: 1px rgb(242, 255, 3);
+        background: linear-gradient(90deg, rgba(2, 0, 36, 0.424) 0%, rgba(0,118,255,0.424) 100%);
+        color: rgb(242, 255, 3);
+        .created_by:hover{
+
+          color: rgb(242, 255, 3);
+          font-size:medium;
+        }
     }
+
 }

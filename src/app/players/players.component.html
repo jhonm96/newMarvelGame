@@ -1,0 +1,21 @@
+
+<div class="cont">
+  <div class="cuadro">
+      <h1 class="title">Jugadores disponibles</h1>
+
+      <form class="cuadro"  [formGroup]="formPlayers">
+
+
+          <select  multiple formControlName="jugadores">
+
+              <option  *ngFor="let jugador of jugadores" [value]="jugador">
+                  <span >{{jugador.nombre}}</span>
+              </option>
+
+          </select>
+
+          <h5 class="info">[Ctrl]+[click] son la clave para escoger tus oponentes</h5>
+          <button  class="btn" type="submit" [disabled]="formPlayers.invalid" (click)="goToCreateGame()">Iniciar juego</button>
+      </form>
+  </div>
+</div>
