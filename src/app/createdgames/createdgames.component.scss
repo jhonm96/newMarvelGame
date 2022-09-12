@@ -1,0 +1,59 @@
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
+    height: 90vh;
+    color: #191919;
+
+    .background {
+        background-image: url("../../../../assets/images/background-spiderman2.jpg");
+    }
+
+    .container_body {
+        background: white;
+        box-shadow: 1px 1px 4px white;
+        border-radius: 10px;
+        max-height: 70%;
+        overflow-y: scroll;
+    }
+
+}
+
+#games_availables {
+    display: block;
+    padding: 10px 25px;
+    margin: 10px 0px;
+    min-width: 280px;
+
+    .option_game {
+        cursor: pointer;
+        list-style: none;
+        padding: 10px;
+        border-radius: 4px;
+        border: 1px solid gray;
+        margin: 2px;
+        transition: all 0.3s ease-in-out;
+
+        .option_game-title {
+            font-weight: bold;
+        }
+
+        .option_game-players {
+            list-style: none;
+        }
+        p{
+            margin: 2px;
+        }
+        .created_by{
+            text-align: end;
+            color: gray;
+            font-size: 0.8rem;
+        }
+
+    }
+
+    .option_game:hover {
+        border: 1px solid #eb5449;
+    }
+}

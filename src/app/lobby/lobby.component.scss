@@ -1,0 +1,134 @@
+.cont{
+  flex-direction: column;
+}
+
+
+.btn{
+  font-size:0.5cm;
+  font-weight: bold;
+  color: rgb(0, 255, 0);
+  border-radius: 5px;
+  position: relative;
+  z-index: 1;
+  overflow: hidden;
+  display: inline-block;
+  background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(153,255,0,0.6348739324831495) 100%);
+}
+
+.btn:hover{
+  font-weight: bold;
+  color: rgb(242, 255, 3);
+  box-shadow: 7px 7px darken(rgba(11, 183, 226, 0.333), 20%), -7px -7px lighten(rgba(221, 224, 40, 0.402), 20%);
+	cursor: pointer;
+}
+
+
+.btn::after{
+  content: "";
+  position: absolute;
+  z-index: -1;
+  padding: 16px 20px;
+  display: block;
+  top: 0;
+  bottom: 0;
+  left: 100%;
+  right: -100%;
+}
+
+.btn:hover::after{
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  -webkit-transition: all 0.35s;
+  transition: all 0.50s;
+  background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(0,118,255,0.6348739324831495) 100%);
+}
+
+.cuadro{
+  font-family:'Franklin Gothic Medium';
+  margin: auto;
+  width: 30em;
+  height: 15em;
+  background: linear-gradient(0deg, rgba(34,193,195,1) 0%, rgba(253,187,45,1) 100%);
+  border-radius: 5px;
+  text-align: center;
+  position: relative;
+}
+
+.sombras{
+  font-style: italic;
+}
+.cuadro{
+  font-family:'Franklin Gothic Medium';
+  margin: auto;
+  width: 30em;
+  height: 15em;
+  background: linear-gradient(0deg, rgba(34,193,195,1) 0%, rgba(253,187,45,1) 100%);
+  border-radius: 5px;
+  text-align: center;
+  position: relative;
+}
+
+.btnL {
+	line-height: 30px;
+	height: 40px;
+	text-align: center;
+	width: 200px;
+  border: 1px solid rgba(255,0,0,0.7665265935475752);
+  background: linear-gradient(90deg, rgba(36,0,0,1) 0%, rgba(255,0,0,0.7665265935475752) 100%);
+	cursor: pointer;
+}
+
+.btn-two {
+	color: rgb(21, 255, 0);
+	transition: all 0.5s;
+	position: relative;
+  font-style: italic;
+  font-family:'Franklin Gothic Medium';
+}
+.btn-two span {
+	z-index: 2;
+	display: block;
+	position: absolute;
+	width: 100%;
+	height: 100%;
+}
+.btn-two::before {
+	content: '';
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	z-index: 1;
+	transition: all 0.5s;
+  border: 1px solid rgba(0,255,27,0.8645658092338497);
+
+
+}
+.btn-two::after {
+	content: '';
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	z-index: 1;
+	transition: all 0.5s;
+	border: 1px solid  rgba(0,255,27,0.8645658092338497);
+
+
+}
+.btn-two:hover::before {
+  transform: rotate(-45deg);
+  background: linear-gradient(90deg, rgba(36, 0, 0, 0.333) 0%, rgba(255, 0, 0, 0.352) 100%);
+}
+.btn-two:hover::after {
+  transform: rotate(45deg);
+  background: linear-gradient(90deg, rgba(36, 0, 0, 0.33) 0%, rgba(255, 0, 0, 0.352) 100%);
+}
+
+
+
+

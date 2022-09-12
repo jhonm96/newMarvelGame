@@ -1,0 +1,139 @@
+
+
+.cont{
+  background-image: url("https://wallpaperaccess.com/full/5742156.jpg");
+
+}
+
+.cuadro{
+  font-family:'Franklin Gothic Medium';
+  color: rgb(0, 255, 0);
+  width: 30em;
+  height: 15em;
+  border-radius: 5px;
+  text-align: left;
+
+}
+
+.btn{
+  font-size:0.5cm;
+  font-weight: bold;
+  color: rgb(0, 255, 0);
+  border-radius: 5px;
+  position: relative;
+  z-index: 1;
+  overflow: hidden;
+  display: inline-block;
+  background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(153,255,0,0.6348739324831495) 100%);
+}
+
+.btn:hover{
+  font-weight: bold;
+  color: rgb(242, 255, 3);
+}
+
+.btn::after{
+  content: "";
+  position: absolute;
+  z-index: -1;
+  padding: 16px 20px;
+  display: block;
+  top: 0;
+  bottom: 0;
+  left: 100%;
+  right: -100%;
+  -webkit-transition: all 0.30s;
+  transition: all 0.35s;
+  background: rgb(131,58,180);
+  background: linear-gradient(90deg, rgba(131,58,180,1) 0%, rgba(253,29,29,1) 50%, rgba(252,176,69,1) 100%);
+}
+
+.btn:hover::after{
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  -webkit-transition: all 0.35s;
+  transition: all 0.50s;
+  background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(0,118,255,0.6348739324831495) 100%);
+}
+
+.button {
+  display: flex;
+  cursor: pointer;
+  align-items: center;
+  padding-right: 40px;
+}
+.button__border-circle {
+      transform: translateX(60px);
+    }
+
+.button__mask-circle {
+  clip-path: circle(25px at 85px);
+}
+
+
+.button__text {
+  z-index: 1;
+  font-size: 14px;
+  margin-right: -18px;
+  color: rgba(251, 0, 255, 0.635);
+  letter-spacing: 0.05em;
+}
+
+.button__wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.button__arrow {
+  left: 35px;
+  height: 3px;
+  width: 50px;
+  display: flex;
+  position: absolute;
+  align-items: center;
+  background-color: rgba(0,118,255,0.6348739324831495);
+}
+  .button:after {
+    content: '';
+    width: 0;
+    height: 0;
+    top: -5px;
+    right: -7px;
+    position: absolute;
+    border-top: 7px solid transparent;
+    border-bottom: 7px solid transparent;
+    border-left: 7px solid rgba(0,118,255,0.6348739324831495);
+  }
+
+
+.button__border-circle {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  border: 1px solid rgba(9, 255, 0, 0.635);
+  transition: 987ms;
+}
+
+.button__mask-circle {
+  width: 50px;
+  height: 50px;
+  position: absolute;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  clip-path: circle(25px);
+  transition:987ms;;
+}
+
+.button__small-circle {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  transform: translateX(60px);
+  background-color: rgba(0,118,255,0.6348739324831495);
+}
+

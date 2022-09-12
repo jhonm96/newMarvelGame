@@ -1,13 +1,112 @@
-.card{
-  background: linear-gradient(0deg, rgba(34,193,195,1) 0%, rgba(253,187,45,1) 100%);
+// .card{
+//   background: linear-gradient(0deg, rgba(34,193,195,1) 0%, rgba(253,187,45,1) 100%);
+// }
+// .sub1{
+//   text-align: left;
+// }
+// .sub2{
+//   text-align: right;
+// }
+// .subtitulos{
+//   display: flex;
+//   align-content: space-between;
+// }
+
+// .cuadro{
+//   font-family:'Franklin Gothic Medium';
+//   margin: auto;
+//   width: 30em;
+//   height: 15em;
+//   background: linear-gradient(0deg, rgba(34,193,195,1) 0%, rgba(253,187,45,1) 100%);
+//   border-radius: 5px;
+//   text-align: center;
+//   position: relative;
+// }
+p {
+  font-size: 2rem;
 }
-.sub1{
-  text-align: left;
-}
-.sub2{
-  text-align: right;
-}
-.subtitulos{
+
+.container {
+  width: 100vw;
+  height: 90vh;
   display: flex;
-  align-content: space-between;
+  align-items: center;
+  justify-content: center;
+
+  .background {
+      background-image: url("https://cdn.discordapp.com/attachments/1015394220267282476/1016153612096905336/WallpaperDog-5465130.jpg");
+  }
+}
+
+.container_views {
+  border-radius: 10px;
+  overflow-y: scroll;
+  max-height: 70%;
+  margin: auto;
+  width: fit-content;
+  background: white;
+  box-shadow: 1px 1px 6px white;
+  padding: 0px 15px 15px 15px;
+  color: black;
+
+  button {
+      display: block;
+      border: none;
+      border-radius: 4px;
+      font-size: 1rem;
+      margin: auto;
+      text-transform: uppercase;
+      padding: 10px 15px;
+
+      border-width: 0px 0px 1px 0px;
+      border-style: solid;
+      border-color: white;
+
+      color: white;
+      background: #eb5449;
+
+      transition: all 0.3s ease-in-out;
+  }
+
+  button:enabled:hover {
+      background: white;
+      color: #eb5449;
+      border-width: 0px 0px 1px 0px;
+      border-style: solid;
+      border-color: #eb5449;
+  }
+
+  button:disabled {
+      background: gray;
+  }
+}
+
+select {
+  display: block;
+  margin: 18px auto 0px auto;
+  border: none;
+  height: fit-content;
+
+  option {
+      padding: 5px 0px;
+      border: 1px solid gray;
+      margin: 2px;
+      display: flex;
+      align-items: center;
+      border-radius: 4px;
+
+      span {
+          text-transform: capitalize;
+          display: block;
+          padding: 5px;
+          font-size: 1.3rem;
+      }
+
+      img {
+          margin: 5px;
+          width: 35px;
+          height: 35px;
+          border-radius: 50%;
+      }
+  }
 }

@@ -1,0 +1,19 @@
+<div class="container">
+  <div class="background"></div>
+  <div class="container_body">
+      <span class="title">Juegos disponibles</span>
+
+      <ul name="games_availables" id="games_availables">
+
+          <li class="option_game" *ngFor="let game of dataGames; let i = index" (click)="goToGame(game.id)">
+              <p class="option_game-title">Juego {{i+1}}</p>
+              <p>Cantidad de jugadores {{game.cantidadJugadores}}</p>
+              <p class="created_by">Creado por {{getNameCreator(game)}}</p>
+          </li>
+
+      </ul>
+      <span class="info">Selecciona una juego para iniciar</span>
+
+  </div>
+
+</div>

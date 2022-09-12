@@ -1,4 +1,4 @@
-<div class="cont">
+<!-- <div class="cont">
   <div class="cuadro">
       <div>
         <h1>Lista de Juegos</h1>
@@ -27,4 +27,24 @@
     </div>
   </div>
 
+</div> -->
+<div class="cont">
+  <div class="background"></div>
+  <div class="container_views">
+      <span class="title">Jugadores disponibles</span>
+
+      <form [formGroup]="formPlayers">
+
+          <select multiple formControlName="jugadores">
+
+              <option *ngFor="let jugador of jugadores" [value]="jugador">
+                  <span class="name">{{jugador.nombre}}</span>
+              </option>
+
+          </select>
+
+          <span class="info">Manten presionado [Ctrl] para seleccionar varios jugadores</span>
+          <button type="submit" [disabled]="formPlayers.invalid" (click)="goToCreateGame()">Iniciar juego</button>
+      </form>
+  </div>
 </div>

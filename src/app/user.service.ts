@@ -18,12 +18,6 @@ export class UserService {
     return setDoc(userref,{id:user?.uid,nombre:user?.displayName,email:user?.email})
   }
 
-  update(){
-    const databaseref=collection(this.firestore,"user")
-    const user = getAuth().currentUser
-    const userref=doc(databaseref,user?.uid)
-    return setDoc(userref,{id:user?.uid,nombre:user?.displayName,email:user?.email})
-  }
 
   listar():Observable<Usuario[]> {
     const databaseref=collection(this.firestore,"user")
