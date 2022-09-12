@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { GameWsService } from '../game-ws.service.service';
+
 import { JuegoData } from '../models/juegointerface';
 import { JugadorSimple } from '../models/jugadorsimpleinterface';
+import { GameWsService } from '../services/game-ws.service.service';
 
 @Component({
   selector: 'app-createdgames',

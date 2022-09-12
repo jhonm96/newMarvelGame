@@ -7,13 +7,13 @@ import { initializeApp,provideFirebaseApp } from '@angular/fire/app';
 import { environment } from '../environments/environment';
 import { provideAuth,getAuth, Auth, AuthModule } from '@angular/fire/auth';
 import { provideFirestore,getFirestore } from '@angular/fire/firestore';
-import { PlayersComponent } from './players/lista-juegos.component';
 import { TableroComponent } from './tablero/tablero.component';
 import { Auth1Module } from './modules/auth1/auth1.module';
 import { HomeComponent } from './home/home.component';
 import { HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
 import { CreatedgamesComponent } from './createdgames/createdgames.component';
+import { PlayersComponent } from './players/players.component';
 
 @NgModule({
   declarations: [

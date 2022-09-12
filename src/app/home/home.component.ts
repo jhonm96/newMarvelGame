@@ -25,5 +25,8 @@ export class HomeComponent implements OnInit {
   crearJuego(){
     this.router.navigate(['/players']);
     }
+    Juegos(){
+      this.router.navigate(['/lobby']);
+      }
 
 }

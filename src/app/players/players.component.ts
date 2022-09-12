@@ -3,10 +3,11 @@ import { User } from 'firebase/auth';
 import { Router } from '@angular/router';
 import { Usuario } from '../models/Usuario.model';
 import { AbstractControl, FormControl, FormGroup, NgModel, ValidationErrors, Validators } from '@angular/forms';
-import { UserService } from '../user.service';
-import { GameWsService } from '../game-ws.service.service';
+import { UserService } from '../services/user.service';
+
 import { AuthService } from '../modules/auth1/auth.service';
 import { v4 as uuidv4, v4 } from 'uuid';
+import { GameWsService } from '../services/game-ws.service.service';
 
 
 
@@ -72,7 +73,7 @@ export class PlayersComponent implements OnInit {
       next: (response) => console.log(response),
       error: (response) => console.log(response),
       complete: () => {
-        this.router.navigate(['/tablero']);
+        this.router.navigate(['/lobby']);
       }
     })
   }

@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import {  HomeComponent } from './home/home.component';
 import { canActivate, redirectUnauthorizedTo } from '@angular/fire/auth-guard';
-import { PlayersComponent } from './players/lista-juegos.component';
+import { PlayersComponent } from './players/players.component';
 import { TableroComponent } from './tablero/tablero.component';
 import { CreatedgamesComponent } from './createdgames/createdgames.component';
 
