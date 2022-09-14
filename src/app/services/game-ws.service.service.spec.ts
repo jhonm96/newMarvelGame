@@ -1,16 +1,17 @@
 /* tslint:disable:no-unused-variable */
 
 import { TestBed, async, inject } from '@angular/core/testing';
-import { GameWs.serviceService } from './game-ws.service.service';
+import { GameWsService } from './game-ws.service.service';
+
 
 describe('Service: GameWs.service', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
-      providers: [GameWs.serviceService]
+      providers: [GameWsService]
     });
   });
 
-  it('should ...', inject([GameWs.serviceService], (service: GameWs.serviceService) => {
+  it('should ...', inject([GameWsService], (service: GameWsService) => {
     expect(service).toBeTruthy();
   }));
 });

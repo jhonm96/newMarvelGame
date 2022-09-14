@@ -21,8 +21,8 @@ export class LoginComponent implements OnInit {
    console.log(response)
    this.router.navigate(['/home']);
    this.user.newUser()
-
    })
+
    .catch(error=> console.log(error))
      }
 

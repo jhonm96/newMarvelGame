@@ -18,7 +18,7 @@ const routes: Routes = [
   {path:"home",component:HomeComponent, ...canActivate(()=> redirectUnauthorizedTo(['']))},
   {path:"players",component:PlayersComponent, ...canActivate(()=> redirectUnauthorizedTo([''])) },
   {path:"lobby",component:CreatedgamesComponent, ...canActivate(()=> redirectUnauthorizedTo([''])) },
-  {path:"tablero",component:TableroComponent, ...canActivate(()=> redirectUnauthorizedTo(['']))}
+  {path:"tablero/:id",component:TableroComponent, ...canActivate(()=> redirectUnauthorizedTo(['']))}
 ]
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

@@ -32,7 +32,16 @@ export class CreatedgamesComponent implements OnInit {
     }
 
     goToGame(idGame: string): void {
-      this.router.navigate(['/tablero']);
+      this.ws.startGame({ juegoId: idGame }).subscribe({
+        next: (res) => {
+          this.ws.start(idGame).subscribe({
+            next: (res) => console.log(res),
+          });
+        },
+        complete: () => {
+          this.router.navigate([`/tablero/${idGame}`]);
+        },
+      });
     }
 
     getNameCreator(dataGame: JuegoData) {
