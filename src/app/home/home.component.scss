@@ -13,7 +13,7 @@
   z-index: 1;
   overflow: hidden;
   display: inline-block;
-  background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(153,255,0,0.6348739324831495) 100%);
+  background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(78, 107, 34, 0.635) 100%);
 }
 
 .btn:hover{
@@ -45,16 +45,24 @@
   transition: all 0.50s;
   background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(0,118,255,0.6348739324831495) 100%);
 }
+h1{
+  margin-bottom: 14px;
+}
+
+.btn-crear{
+  margin: 10px;
+}
 
 .cuadro{
   font-family:'Franklin Gothic Medium';
-
+  color: aliceblue;
   margin: auto;
-  width: 30em;
-  height: 15em;
-  //border: 3px solid;
-  border-color:  rgb(0, 229, 255);
-  background: radial-gradient(circle, rgba(63, 238, 142, 0.843) 42%, rgb(70, 81, 178) 100%);
+  width: 50em;
+  height: 17em;
+  box-shadow: 3px 3px 15px  rgba(10, 39, 17, 0.906);
+  padding: 14px;
+  border-color:  rgb(29, 43, 22);
+  background: rgba(0, 1, 0, 0.8);
   border-radius: 5px;
   text-align: center;
   position: relative;
@@ -65,6 +73,7 @@
 }
 
 .btnL {
+  margin: 6px;
 	line-height: 30px;
 	height: 40px;
 	text-align: center;

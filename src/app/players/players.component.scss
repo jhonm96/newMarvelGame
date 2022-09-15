@@ -2,12 +2,15 @@
 .cuadro{
   font-family:'Franklin Gothic Medium';
   margin: auto;
-  width: 30em;
-  height: 20em;
-  background: linear-gradient(0deg, rgba(253, 45, 45, 0.792) 0%, rgba(253,187,45,0.792) 100%);
+  width: 50em;
+  height: 27em;
+  background: rgba(9, 7, 5, 0.787) ;
   border-radius: 5px;
   text-align: center;
   position: relative;
+  box-shadow: 3px 3px 15px rgba(12, 8, 3, 0.769) ;
+  color: aliceblue;
+  padding: 14px;
 }
 .cont{
   font-family:'Franklin Gothic Medium';
@@ -23,7 +26,7 @@ select {
   display: block;
   border: none;
   overflow:scroll;
-  background: linear-gradient(0deg, rgba(34, 192, 195, 0) 0%, rgba(253,187,45,1) 100%);
+  background:  rgba(34, 192, 195, 0);
   width: 100%;
   margin-top: 1cm;
   margin-bottom: 1cm;
@@ -31,27 +34,29 @@ select {
 
   option {
       padding: 10px 5px;
-      border: 1px solid rgb(211, 208, 29);
+      border: 1px solid rgba(55, 115, 25, 0.555);
       margin: 10px;
       display: flex;
       align-items: center;
       border-radius: 4px;
       font-size: larger;
+      color: white;
 
   }
+
 }
 
 .btn{
   margin-top: 20px;
   font-size:0.5cm;
   font-weight: bold;
-  color: rgb(0, 255, 0);
+  color: rgb(255, 255, 255);
   border-radius: 5px;
   position: relative;
   z-index: 1;
   overflow: hidden;
   display: inline-block;
-  background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(153,255,0,0.6348739324831495) 100%);
+  background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(104, 141, 48, 0.635) 100%);
 }
 
 .btn:hover{

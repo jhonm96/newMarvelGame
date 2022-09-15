@@ -38,7 +38,6 @@ export class PlayersComponent implements OnInit {
         "", [Validators.required, this.jugadoresMinimos]
       )
     });
-
         this.gameId = v4();
 
     this.principalPlayer = this.auth.getMyUser();
@@ -68,7 +67,9 @@ export class PlayersComponent implements OnInit {
     this.command = {
       ...this.command,
       jugadores: { ...this.command.jugadores, ...playersSend }
+
     }
+    console.log("test"+this.command)
 
     this.gameService.create(this.command).subscribe({
       next: (response) => console.log(response),

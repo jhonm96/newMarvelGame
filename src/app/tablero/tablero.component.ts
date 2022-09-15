@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { switchMap } from 'rxjs';
 import { AllDataBoard } from '../models/all.data.board';
+import { Card } from '../models/card.model';
 import { List } from '../models/list.model';
 import { Round } from '../models/round.model';
 import { AuthService } from '../modules/auth1/auth.service';
@@ -20,6 +21,7 @@ export class TableroComponent implements OnInit {
   board: AllDataBoard | null = null;
   ronda:Round| null = null;
   isMainPlayer: boolean = false;
+  cartasUser!:Card[];
 
   constructor(
     private activatedRoute: ActivatedRoute,
@@ -45,20 +47,18 @@ export class TableroComponent implements OnInit {
       });
 
     this.ws.start(this.gameId).subscribe((res) => {
-
     });
     this.getBoardId();
+
   }
 
   getBoardId() {
     this.ws.getBoard(this.gameId).subscribe({
       next: (res) => {
         if (res) {
-          // console.log(res);
-          //this.isMainPlayer = res.jugadorPrincipalId == this.userId;
+          this.getMazoUser()
           this.board = res;
           console.log(this.board);
-          console.log();
         } else {
           this.router.navigate(['/lobby']);
         }
@@ -77,4 +77,18 @@ export class TableroComponent implements OnInit {
     });
   }
 
+  getMazoUser(){
+    this.ws.getMazoPlayer(this.userId,this.gameId).subscribe({
+      next: (res) => {
+        this.cartasUser= res.cartas;
+        console.log(res);
+      },
+      error: (err) => {
+        console.log(err);
+      },
+    });
+
+  }
 }
+
+

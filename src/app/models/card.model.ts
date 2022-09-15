@@ -4,4 +4,5 @@ export interface Card {
   estaHabilitada: boolean;
   poder:          number;
   uri:            string;
+  nombre:         string;
 }

@@ -2,7 +2,7 @@
   <div class="cuadro">
       <h1 class="title">Jugadores disponibles</h1>
 
-      <form class="cuadro"  [formGroup]="formPlayers">
+      <form class=""  [formGroup]="formPlayers">
 
 
           <select  multiple formControlName="jugadores">
@@ -14,7 +14,8 @@
           </select>
 
           <h5 class="info">[Ctrl]+[click] son la clave para escoger tus oponentes</h5>
-          <button  class="btn" type="submit" [disabled]="formPlayers.invalid" (click)="goToCreateGame(this)">Iniciar juego</button>
+
       </form>
+      <button  class="btn" type="submit" [disabled]="formPlayers.invalid" (click)="goToCreateGame(this)">Iniciar juego</button>
   </div>
 </div>

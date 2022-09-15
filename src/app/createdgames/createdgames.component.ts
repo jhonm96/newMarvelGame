@@ -51,4 +51,8 @@ export class CreatedgamesComponent implements OnInit {
     getNameJugadores(player: JugadorSimple) {
       return player.alias;
     }
+
+    deleteGame(idGame: string):void{
+
+    }
   }

@@ -4,6 +4,7 @@ import { webSocket, WebSocketSubject } from 'rxjs/webSocket';
 import { HttpClient } from '@angular/common/http';
 import { AuthService } from '../modules/auth1/auth.service';
 import { AllDataBoard } from '../models/all.data.board';
+import { List } from '../models/list.model';
 
 
 @Injectable({
@@ -42,5 +43,9 @@ export class GameWsService {
 
   getBoard(gameId:string):Observable<AllDataBoard>{
     return this.http.get<AllDataBoard>(`${this.URL_HTTP}/juego/${gameId}`)
+  }
+
+  getMazoPlayer(playerId: string, gameId: string): Observable<List> {
+    return this.http.get<List>(`${this.URL_HTTP}/juego/mazo/${playerId}/${gameId}`);
   }
 }
