@@ -8,6 +8,7 @@ import { UserService } from '../services/user.service';
 import { AuthService } from '../modules/auth1/auth.service';
 import { v4 as uuidv4, v4 } from 'uuid';
 import { GameWsService } from '../services/game-ws.service.service';
+import { delay } from 'rxjs';
 
 
 
@@ -59,7 +60,7 @@ export class PlayersComponent implements OnInit {
     })
   }
 
-  goToCreateGame(): void {
+  async goToCreateGame(data:any)  {
 
     const jugadoresParaJugar = this.formPlayers.value.jugadores as User[];
     const playersSend = this.generatePlayersCommand(jugadoresParaJugar);

@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { switchMap } from 'rxjs';
-import { Dashboard } from '../models/dashboard.model';
+import { AllDataBoard } from '../models/all.data.board';
 import { List } from '../models/list.model';
+import { Round } from '../models/round.model';
 import { AuthService } from '../modules/auth1/auth.service';
 import { GameWsService } from '../services/game-ws.service.service';
 import { UserService } from '../services/user.service';
@@ -16,7 +17,8 @@ export class TableroComponent implements OnInit {
   private gameId!: string;
   private userId!: string;
   list: List | null = null;
-  board: Dashboard | null = null;
+  board: AllDataBoard | null = null;
+  ronda:Round| null = null;
   isMainPlayer: boolean = false;
 
   constructor(
@@ -52,8 +54,11 @@ export class TableroComponent implements OnInit {
     this.ws.getBoard(this.gameId).subscribe({
       next: (res) => {
         if (res) {
-          this.isMainPlayer = res.jugadorPrincipalId == this.userId;
+          // console.log(res);
+          //this.isMainPlayer = res.jugadorPrincipalId == this.userId;
           this.board = res;
+          console.log(this.board);
+          console.log();
         } else {
           this.router.navigate(['/lobby']);
         }

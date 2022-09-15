@@ -1,5 +1,6 @@
 .cont{
   flex-direction: column;
+  background: url("https://images5.alphacoders.com/500/500832.jpg");
 }
 
 
@@ -47,10 +48,13 @@
 
 .cuadro{
   font-family:'Franklin Gothic Medium';
+
   margin: auto;
   width: 30em;
   height: 15em;
-  background: linear-gradient(0deg, rgba(34,193,195,1) 0%, rgba(253,187,45,1) 100%);
+  //border: 3px solid;
+  border-color:  rgb(0, 229, 255);
+  background: radial-gradient(circle, rgba(63, 238, 142, 0.843) 42%, rgb(70, 81, 178) 100%);
   border-radius: 5px;
   text-align: center;
   position: relative;
@@ -58,16 +62,6 @@
 
 .sombras{
   font-style: italic;
-}
-.cuadro{
-  font-family:'Franklin Gothic Medium';
-  margin: auto;
-  width: 30em;
-  height: 15em;
-  background: linear-gradient(0deg, rgba(34,193,195,1) 0%, rgba(253,187,45,1) 100%);
-  border-radius: 5px;
-  text-align: center;
-  position: relative;
 }
 
 .btnL {

@@ -3,7 +3,8 @@ import { Observable } from 'rxjs';
 import { webSocket, WebSocketSubject } from 'rxjs/webSocket';
 import { HttpClient } from '@angular/common/http';
 import { AuthService } from '../modules/auth1/auth.service';
-import { Dashboard } from '../models/dashboard.model';
+import { AllDataBoard } from '../models/all.data.board';
+
 
 @Injectable({
   providedIn: 'root'
@@ -39,7 +40,7 @@ export class GameWsService {
     return this.http.post(`${this.URL_HTTP}/juego/iniciar`, body);
   }
 
-  getBoard(gameId:string):Observable<Dashboard>{
-    return this.http.get<Dashboard>(`${this.URL_HTTP}/juego/${gameId}`)
+  getBoard(gameId:string):Observable<AllDataBoard>{
+    return this.http.get<AllDataBoard>(`${this.URL_HTTP}/juego/${gameId}`)
   }
 }
