@@ -21,17 +21,18 @@ export class TableroComponent implements OnInit {
   board: AllDataBoard | null = null;
   ronda:Round| null = null;
   isMainPlayer: boolean = false;
-  cartasUser!:Card[];
+  cartasUser:Card[] = [];
   time:number = 0;
   roundStarted!: boolean;
   roundNumber:any ;
-  cardsBoard: any;
+  cardsBoard: Card[] = [];
   gamePlayers: any;
   winnerPlayers: string="";
   thereAWinner: boolean= false;
   roundWinner: any;
   cantPlayers:number = 0;
-  cartaApostada:any=null;
+  cartaApostada:any;
+  score:number=0;
 
   constructor(
     private activatedRoute: ActivatedRoute,
@@ -49,8 +50,8 @@ export class TableroComponent implements OnInit {
     this.activatedRoute.params
       .pipe(switchMap(({ id }) => {
         this.gameId = id;
-
         this.getBoardId();
+        this.getMazoUser()
         this.ws.startGame({ juegoId: this.gameId }).subscribe({});
 
         return this.ws.start(id);
@@ -58,7 +59,7 @@ export class TableroComponent implements OnInit {
       ).subscribe({
 
         next: (event: any) => {
-          console.log(event);
+          console.log({type:event.type, event});
 
           switch (event.type) {
 
@@ -72,9 +73,7 @@ export class TableroComponent implements OnInit {
             case 'cardgame.rondainiciada':
               this.roundStarted = true;
               this.time = event.tiempo;
-              this.roundNumber = event.ronda.numero;
-
-              //this.cartasDelJugador = this.cartasDelJugador;
+              this.roundNumber = event.numero;
               break;
 
             case 'cardgame.ponercartaentablero':
@@ -84,7 +83,7 @@ export class TableroComponent implements OnInit {
                 estaOculta: event.carta.estaOculta,
                 estaHabilitada: event.carta.estaHabilitada,
                 poder: event.carta.poder,
-                url: event.carta.url,
+                uri: event.carta.uri,
                 nombre: event.carta.nombre
               })
               break;
@@ -98,7 +97,6 @@ export class TableroComponent implements OnInit {
               this.time = event.tiempo;
               this.gamePlayers = event.ronda.jugadores.length
               this.roundNumber = event.ronda.numero;
-              this.getMazoUser()
               break;
 
             case 'cardgame.juegofinalizado':
@@ -122,15 +120,16 @@ export class TableroComponent implements OnInit {
             case 'cardgame.cartasasignadasajugador':
 
               if (event.ganadorId.uuid === this.userId) {
+                this.score=this.score+500
                 event.cartasApuesta.forEach((carta: any) => {
                   this.cartasUser.push({
-                    cartaId: event.carta.cartaId,
+                    cartaId: event.cartaId,
                     jugadorId: "",
-                    estaOculta: event.carta.estaOculta,
-                    estaHabilitada: event.carta.estaHabilitada,
-                    poder: event.carta.poder,
-                    uri: event.carta.uri,
-                    nombre: event.carta.nombre
+                    estaOculta: event.estaOculta,
+                    estaHabilitada: event.estaHabilitada,
+                    poder: event.poder,
+                    uri: event.uri,
+                    nombre: event.nombre
                   });
                 });
 
@@ -149,7 +148,6 @@ export class TableroComponent implements OnInit {
     this.ws.getBoard(this.gameId).subscribe({
       next: (res) => {
         if (res) {
-          //this.getMazoUser()
           this.board = res;
           console.log(this.board);
           this.cantPlayers=this.board?.ronda.jugadores.length
@@ -194,13 +192,13 @@ export class TableroComponent implements OnInit {
   }
 
   MostrarCartaenTablero(){
-    document.querySelectorAll(".px2").forEach((element)=>element.classList.add("show"));
-    document.querySelectorAll(".card").forEach((element)=>element.classList.remove("show"));
+   document.querySelectorAll(".px2").forEach((element)=>element.classList.add("show"));
+    document.querySelectorAll(".card").forEach((element)=>element.classList.add("show1"));
   }
 
   OcultarCartaTablero(){
     document.querySelectorAll(".px2").forEach((element)=>element.classList.remove("show"));
-    document.querySelectorAll(".card").forEach((element)=>element.classList.add("show"));
+    document.querySelectorAll(".card").forEach((element)=>element.classList.remove("show1"));
   }
 
   cartaDeApuesta(idCard: string){
@@ -211,7 +209,6 @@ export class TableroComponent implements OnInit {
         juegoId: this.gameId
       }
     }
-
     console.log(this.cartaApostada)
   }
 

@@ -9,5 +9,5 @@ export interface JuegoData {
     cantidadJugadores: number;
     jugadores: { [key: string]: JugadorSimple };
     ganador: null;
-    eliminado:boolean;
+    eliminado:boolean|null;
 }

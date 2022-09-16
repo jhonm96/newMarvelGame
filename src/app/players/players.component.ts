@@ -69,7 +69,7 @@ export class PlayersComponent implements OnInit {
       jugadores: { ...this.command.jugadores, ...playersSend }
 
     }
-    console.log("test"+this.command)
+    console.log(this.command)
 
     this.gameService.create(this.command).subscribe({
       next: (response) => console.log(response),
@@ -89,4 +89,3 @@ export class PlayersComponent implements OnInit {
     }, {});
   }
 }
-
