@@ -5,26 +5,22 @@
 
   <div class="boxInfo">
 
-  <div class="topBox">
-   Ronda
+    <div class="topBox">
+    Ronda {{roundNumber}}
+    </div>
+
+    <div class="topBox">
+    <h6 >Tiempo {{time}} seg</h6>
+    <h6>players {{gamePlayers}} </h6>
+    </div>
+
+    <div cantPlayers>
+      <button class="px2" (click)="quitarCarta()" >
+      </button>
+    </div>
+
+    <button class="btn" (click)="iniciar()">Iniciar</button>
   </div>
-
-  <div class="topBox">
-  <h6 >Tiempo para iniciar ronda {{board?.tiempo}}</h6>
-  <h6>players {{board?.ronda?.jugadores?.length}} </h6>
-  <h6>Tiempo 50seg</h6>
-  </div>
-
-
-  <div class="px2" >
-
-  </div>
-
-  <div class="px2">
-
-  </div>
-  <button class="btn">Iniciar</button>
-</div>
 
 
   <div class="mazo">
@@ -32,14 +28,11 @@
      Cartas
      </div>
 
-     <div class="card" *ngFor="let cartas of cartasUser">
+     <button class="card"   *ngFor="let cartas of cartasUser" (click)="ponerCarta(cartas.cartaId)">
       <h2 class="card-title">{{cartas.nombre}}</h2>
       <img src="{{cartas.uri}}" alt="">
       <p class="card-desc">POWER:{{cartas.poder}}</p>
-    </div>
+    </button>
 
     </div>
-
-
-
   </div>

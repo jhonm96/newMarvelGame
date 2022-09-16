@@ -5,4 +5,5 @@ export interface Card {
   poder:          number;
   uri:            string;
   nombre:         string;
+  jugadorId:      string;
 }

@@ -11,22 +11,21 @@ import { GameWsService } from '../services/game-ws.service.service';
   styleUrls: ['./createdgames.component.scss']
 })
 export class CreatedgamesComponent implements OnInit {
-
-    dataGames: any;
+    dataGames: any|null
 
     constructor(
       private router: Router,
       private ws: GameWsService,
     ) {
-      this.dataGames = [];
     }
 
     ngOnInit(): void {
       this.ws.getGames().subscribe({
         next: (response) => {
-          this.dataGames = response;
-          console.log(response);
+          this.dataGames=response
+          console.log(this.dataGames)
         },
+
         error: (error) => console.log(error)
       });
     }
@@ -52,7 +51,8 @@ export class CreatedgamesComponent implements OnInit {
       return player.alias;
     }
 
-    deleteGame(idGame: string):void{
+    deleteGame(idGame: string){
+
 
     }
   }

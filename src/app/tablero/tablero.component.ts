@@ -22,6 +22,16 @@ export class TableroComponent implements OnInit {
   ronda:Round| null = null;
   isMainPlayer: boolean = false;
   cartasUser!:Card[];
+  time:number = 0;
+  roundStarted!: boolean;
+  roundNumber:any ;
+  cardsBoard: any;
+  gamePlayers: any;
+  winnerPlayers: string="";
+  thereAWinner: boolean= false;
+  roundWinner: any;
+  cantPlayers:number = 0;
+  cartaApostada:any=null;
 
   constructor(
     private activatedRoute: ActivatedRoute,
@@ -34,31 +44,115 @@ export class TableroComponent implements OnInit {
   }
 
 
-  ngOnInit(): void {
+  ngOnInit() {
+
     this.activatedRoute.params
-      .pipe(
-        switchMap(({ id }) => {
-          this.gameId = id;
-          return this.ws.start(id);
-        })
-      )
-      .subscribe(() => {
-        console.log(this.gameId);
+      .pipe(switchMap(({ id }) => {
+        this.gameId = id;
+
+        this.getBoardId();
+        this.ws.startGame({ juegoId: this.gameId }).subscribe({});
+
+        return this.ws.start(id);
+      })
+      ).subscribe({
+
+        next: (event: any) => {
+          console.log(event);
+
+          switch (event.type) {
+
+            case 'cardgame.tiempocambiadodeltablero':
+              this.time = event.tiempo;
+              if (this.time==3){
+                this.apostarCarta(this.cartaApostada.cartaId)
+              }
+              break;
+
+            case 'cardgame.rondainiciada':
+              this.roundStarted = true;
+              this.time = event.tiempo;
+              this.roundNumber = event.ronda.numero;
+
+              //this.cartasDelJugador = this.cartasDelJugador;
+              break;
+
+            case 'cardgame.ponercartaentablero':
+              this.cardsBoard.push({
+                cartaId: event.carta.cartaId,
+                jugadorId: this.userId,
+                estaOculta: event.carta.estaOculta,
+                estaHabilitada: event.carta.estaHabilitada,
+                poder: event.carta.poder,
+                url: event.carta.url,
+                nombre: event.carta.nombre
+              })
+              break;
+
+            case 'cardgame.cartaquitadadelmazo':
+              this.cartasUser = this.cartasUser
+                .filter((item) => item.cartaId !== event.carta.cartaId.uuid)
+              break;
+
+            case 'cardgame.rondacreada':
+              this.time = event.tiempo;
+              this.gamePlayers = event.ronda.jugadores.length
+              this.roundNumber = event.ronda.numero;
+              this.getMazoUser()
+              break;
+
+            case 'cardgame.juegofinalizado':
+              this.winnerPlayers = "Ganador:" + event.alias;
+              this.thereAWinner = true;
+              this.roundWinner = event.alias;
+              alert("Ganador del Juego: " + this.roundWinner)
+
+              //this.router.navigate(['listaJugadores']);
+
+              setTimeout(() => {
+                this.router.navigate(['/home']);
+              }, 600);
+              break;
+
+            case 'cardgame.rondaterminada':
+              this.cardsBoard = [];
+              this.OcultarCartaTablero();
+              break;
+
+            case 'cardgame.cartasasignadasajugador':
+
+              if (event.ganadorId.uuid === this.userId) {
+                event.cartasApuesta.forEach((carta: any) => {
+                  this.cartasUser.push({
+                    cartaId: event.carta.cartaId,
+                    jugadorId: "",
+                    estaOculta: event.carta.estaOculta,
+                    estaHabilitada: event.carta.estaHabilitada,
+                    poder: event.carta.poder,
+                    uri: event.carta.uri,
+                    nombre: event.carta.nombre
+                  });
+                });
+
+                alert("Ganaste papu! siuuuuuuuu!")
+
+              } else alert("Nee ya valiste...")
+
+              break;
+
+          }
+        }
       });
-
-    this.ws.start(this.gameId).subscribe((res) => {
-    });
-    this.getBoardId();
-
   }
 
   getBoardId() {
     this.ws.getBoard(this.gameId).subscribe({
       next: (res) => {
         if (res) {
-          this.getMazoUser()
+          //this.getMazoUser()
           this.board = res;
           console.log(this.board);
+          this.cantPlayers=this.board?.ronda.jugadores.length
         } else {
           this.router.navigate(['/lobby']);
         }
@@ -87,7 +181,65 @@ export class TableroComponent implements OnInit {
         console.log(err);
       },
     });
+  }
 
+  iniciar() {
+    this.ws.iniciarRonda(this.gameId).subscribe({
+      next: (ronda) => {
+        console.log(ronda);
+      },
+      error:(error)=>console.log(error),
+      complete:()=> console.log('ronda Iniciada')
+    });
+  }
+
+  MostrarCartaenTablero(){
+    document.querySelectorAll(".px2").forEach((element)=>element.classList.add("show"));
+    document.querySelectorAll(".card").forEach((element)=>element.classList.remove("show"));
+  }
+
+  OcultarCartaTablero(){
+    document.querySelectorAll(".px2").forEach((element)=>element.classList.remove("show"));
+    document.querySelectorAll(".card").forEach((element)=>element.classList.add("show"));
+  }
+
+  cartaDeApuesta(idCard: string){
+    if(this.cartaApostada==null) {
+        this.cartaApostada={
+        jugadorId: this.userId,
+        cartaId: idCard,
+        juegoId: this.gameId
+      }
+    }
+
+    console.log(this.cartaApostada)
+  }
+
+  eliminarCartaDeApuesta(){
+    this.cartaApostada= null
+    console.log(this.cartaApostada)
+  }
+
+  ponerCarta(idCard:string){
+    this.MostrarCartaenTablero();
+    this.cartaDeApuesta(idCard);
+  }
+
+  quitarCarta(){
+    this.OcultarCartaTablero()
+    this.eliminarCartaDeApuesta()
+
+  }
+
+  apostarCarta(idCard:string){
+    const body = {
+      jugadorId: this.userId,
+      cartaId: idCard,
+      juegoId: this.gameId
+    }
+    this.ws.putUserCardToBoard(body).subscribe({
+      next: (res) => { console.log(res); }
+    });
   }
 }
 

@@ -5,6 +5,7 @@ import { HttpClient } from '@angular/common/http';
 import { AuthService } from '../modules/auth1/auth.service';
 import { AllDataBoard } from '../models/all.data.board';
 import { List } from '../models/list.model';
+import { JuegoData } from '../models/juegointerface';
 
 
 @Injectable({
@@ -34,11 +35,23 @@ export class GameWsService {
   }
 
   getGames(): Observable<object> {
-    return this.http.get(`${this.URL_HTTP}/juego/listar/${this.auth.getMyUser()?.uid}`);
+    return this.http.get<object>(`${this.URL_HTTP}/juego/listar/${this.auth.getMyUser()?.uid}`);
   }
 
   startGame(body: any) {
     return this.http.post(`${this.URL_HTTP}/juego/iniciar`, body);
+  }
+
+  // iniciarRonda(juegoId:any){
+  //   return this.http.post('http://localhost:8080/juego/ronda/iniciar', {juegoId: juegoId});
+  // }
+
+  iniciarRonda(gameId: string) {
+    return this.http.post(`${this.URL_HTTP}/juego/ronda/iniciar`, { juegoId: gameId });
+  }
+
+  putUserCardToBoard(body: object) {
+    return this.http.post(`${this.URL_HTTP}/juego/poner`, { ...body });
   }
 
   getBoard(gameId:string):Observable<AllDataBoard>{
